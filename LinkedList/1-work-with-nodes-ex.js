@@ -15,8 +15,8 @@ Kitten.next = Puppy;
 
 [Dog, Cat] = [new Node('Dog'), new Node('Cat')];
 
-Dog.next = Cat;
-Puppy.next = Dog;
+Cat.next = Dog;
+Puppy.next = Cat;
 
 // test your code
 console.log(Kitten.next);
