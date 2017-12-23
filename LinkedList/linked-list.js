@@ -37,4 +37,27 @@ function LinkedList(){
         length++;
     }
 
+    /* Write a remove method that takes an element and removes it from the linked list.*/
+
+    this.remove = function(toRemove){
+        console.log('here')
+        let curr = head;
+        let prev = head;
+        
+        while(curr !== null){
+            if(curr.element === toRemove){
+                if(curr === head){
+                    head = curr.next;
+                }else{
+                    prev.next = curr.next;
+                }
+                break;
+            }
+
+            prev = curr;
+            curr = curr.next;
+        }
+        length--;
+    }
+
 }
