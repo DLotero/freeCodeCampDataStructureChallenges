@@ -40,7 +40,6 @@ function LinkedList(){
     /* Write a remove method that takes an element and removes it from the linked list.*/
 
     this.remove = function(toRemove){
-        console.log('here')
         let curr = head;
         let prev = head;
         
@@ -60,4 +59,101 @@ function LinkedList(){
         length--;
     }
 
+    /* Write an isEmpty method that checks if the linked list is empty, 
+     * an indexOf method that returns the index of a given element, and 
+     * an elementAt that returns an element at a given index.
+     */
+
+    this.isEmpty = function(){
+        return (length === 0 && head === null);
+    }
+   
+    this.indexOf = function(element){
+        let idx = 0;
+        let node = head;
+   
+        while(node !== null){
+            if(node.element === element) return idx;
+            
+            node=node.next;
+            idx ++;
+        }
+
+        return -1;
+    }
+
+    this.elementAt = function(index){
+        let node = head;
+        while(node !== null){
+            if(index === 0) return node.element;
+            
+            node = node.next;
+            index--;
+        }
+    }
+
+    /* Write a removeAt(index) method that removes and returns a node at a given index. 
+     * The method should return null if the given index is either negative, or greater 
+     * than or equal to the length of the linked list.
+     * Note: Remember to keep count of the currentIndex.
+     */
+    
+     this.removeAt = function(index){
+        if(index >= length || index < 0 ) return null;
+
+        let currIdx = index;
+        let prev = head;
+        let curr = head;
+
+        while(curr !== null){
+
+            if(currIdx === 0){
+                if(head === curr){
+                    head = curr.next;
+                }else{
+                    prev = curr.next;
+                } 
+                length--;
+                return curr.element;
+            }else{
+
+                prev = curr;
+                curr = curr.next;
+                currIdx--;
+            }
+        }
+     }
+
+     /* Create an addAt(index,element) method that adds an element at a given index. 
+      * Return false if an element was unable to be added.
+      * Note: Remember to check if the given index is a negative or is longer than the
+      * length of the linked list
+      */
+
+      this.addAt = function(index,element){
+
+        if(index >=length || index < 0) return false;
+        let currentIndex = 0;
+        let node = head;
+
+        while(node !== null){
+
+            if(currentIndex === index){                
+                let newNode = new Node(element);
+                newNode.next = node.next;
+                node.next = newNode;
+                length ++;
+                return;
+            }
+
+            currentIndex++;
+            node = node.next
+        }        
+      }
+
 }
+
+
+
+
+
