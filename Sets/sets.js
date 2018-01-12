@@ -10,6 +10,7 @@
 
 function Set() {
     // the var collection will hold our set
+    console.log('set');
     var collection = [];
     // this method will check for the presence of an element and return true or false
     this.has = function(element) {
@@ -47,5 +48,41 @@ function Set() {
 
         return false;
      }
+
+     /* create a size function for our Set. This function should be named
+      * this.size and it should return the size of the collection.
+      */
+      
+      this.size = function(){
+          return collection.length;
+      }
+
+      /* create a method on our Set data structure called union. 
+       * This method should take another Set as an argument and 
+       * return the union of the two sets, excluding any duplicate values.
+       */
+      
+       this.union = function(otherSet){
+           let union = new Set();
+           
+           otherSet.values().forEach(element => union.add(element));
+
+           this.values().forEach(element => union.add(element));
+
+           return union;
+
+       }
+
     // change code above this line
 }
+
+let a = new Set()
+a.add(1)
+a.add(2)
+a.add(3)
+let b = new Set()
+b.add(1)
+b.add(4)
+b.add(2)
+b.add(5)
+b.union(a)
