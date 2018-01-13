@@ -10,7 +10,6 @@
 
 function Set() {
     // the var collection will hold our set
-    console.log('set');
     var collection = [];
     // this method will check for the presence of an element and return true or false
     this.has = function(element) {
@@ -20,7 +19,6 @@ function Set() {
     this.values = function() {
         return collection;
     };
-    // change code below this line
 
     this.add = function(element){
 
@@ -66,23 +64,49 @@ function Set() {
            let union = new Set();
            
            otherSet.values().forEach(element => union.add(element));
-
            this.values().forEach(element => union.add(element));
 
            return union;
 
        }
 
-    // change code above this line
-}
+       /* create a method on our Set data structure called intersection.
+        * An intersection of sets represents all values that are common to two or more sets. 
+        * This method should take another Set as an argument and return the intersection of 
+        * the two sets.
+        */
 
-let a = new Set()
-a.add(1)
-a.add(2)
-a.add(3)
-let b = new Set()
-b.add(1)
-b.add(4)
-b.add(2)
-b.add(5)
-b.union(a)
+        this.intersection = function(otherSet){
+
+            return otherSet.values().map( element => {
+                if(this.has(element)) return element;
+            }).filter((el) => el !== null && el !== undefined)
+        }
+
+        /* create a method called difference. 
+         * A difference of sets should compare two sets and return the 
+         * items present in the first set that are absent in the second.
+         * This method should take another Set as an argument and return 
+         * the difference of the two sets.
+         */ 
+
+    this.difference = function(otherSet){
+        return this.values().map((value) => ((!otherSet.has(value)) ? value : null ))
+                                .filter((element) =>  (element !== null && element !== undefined));
+    }
+
+    /* create a method on our Set data structure called subset. 
+     * This will compare the first set, against the second and 
+     * if the first set is fully contained within the Second then it will return true.
+     */
+    
+     this.subset = function(otherSet){
+
+        let inThis = this.values().map(value => (otherSet.has(value)) ? value : null)
+                                      .filter(element => (element !== null && element !== undefined));
+        
+        return inThis.length === this.size();
+
+     }
+
+}
