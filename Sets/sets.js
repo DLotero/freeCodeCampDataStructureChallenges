@@ -109,4 +109,16 @@ function Set() {
 
      }
 
+     /* ass an array and a value to the checkSet() function. 
+      * Your function should create an ES6 set from the array argument. 
+      * Find if the set contains the value argument. Find the size of the set. 
+      * And return those two values in an array.*/
+    
+      function checkSet(arrToBeSet, checkValue){
+
+        let set = new Set(arrToBeSet);
+        return [set.has(checkValue), set.size]
+     
+     }
+
 }
