@@ -55,5 +55,5 @@ var Map = function() {
 
     this.clear = function(){
         this.collection = {}
-    }
+    }  
 };
