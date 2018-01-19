@@ -61,12 +61,4 @@ function Stack() {
     // Only change code above this line
 }
 
-let s = new Stack();
-
-s.push(1);
-s.push(2);
-s.push(3);
-s.print();
-s.pop();
-s.print();
 
